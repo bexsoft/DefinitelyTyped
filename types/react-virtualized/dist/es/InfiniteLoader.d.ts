@@ -1,4 +1,4 @@
-import { PureComponent, Validator, Requireable } from 'react';
+import { PureComponent, Validator, ReactNode } from 'react';
 import { Index, IndexRange } from '../../index';
 
 export type InfiniteLoaderChildProps = {
@@ -15,7 +15,7 @@ export type InfiniteLoaderProps = {
      * The specified :onRowsRendered function should be passed through to the child's :onRowsRendered property.
      * The :registerChild callback should be set as the virtualized component's :ref.
      */
-    children: (props: InfiniteLoaderChildProps) => React.ReactNode;
+    children: (props: InfiniteLoaderChildProps) => ReactNode;
     /**
      * Function responsible for tracking the loaded state of each row.
      * It should implement the following signature: ({ index: number }): boolean
@@ -61,7 +61,7 @@ export type InfiniteLoaderProps = {
  */
 export class InfiniteLoader extends PureComponent<InfiniteLoaderProps> {
     static propTypes: {
-        children: Validator<(props: InfiniteLoaderChildProps) => React.ReactNode>;
+        children: Validator<(props: InfiniteLoaderChildProps) => ReactNode>;
         isRowLoaded: Validator<(params: Index) => boolean>;
         loadMoreRows: Validator<(params: IndexRange) => Promise<any>>;
         minimumBatchSize: Validator<number>;
